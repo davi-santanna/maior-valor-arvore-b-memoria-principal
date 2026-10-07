@@ -189,10 +189,26 @@ void particiona(TNo *P, int d, int pos, int chave, TNo *pt) {
     P->m = d;
 }
 
+int ehFolha(TNo* raiz){
+    return raiz->p[0] == NULL;
+}
+
 int maior(TNo *raiz) {
-    //TODO: Implementar essa funcao
+
+    while(raiz){
+        for(int x = 0; x<raiz->m; x++){
+            printf("%d ", raiz->s[x]);
+        }
+        printf("\n");
+        if (ehFolha(raiz)){
+            return raiz->s[raiz->m-1];
+        }
+        raiz = raiz->p[raiz->m];
+    }
     return -1;
 }
+
+
 
 int main(int argc, char *argv[]) {
     TNo *raiz = NULL;
